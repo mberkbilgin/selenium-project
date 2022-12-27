@@ -1,4 +1,4 @@
-package hw.orderPage;
+package hw_smartbear.orderPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package hw.viewAllOrder;
+package hw_smartbear.viewAllOrder;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package hw.orderPage;
+package hw_smartbear.orderPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,27 +7,19 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-public class Reset {
+public class CardNumber {
     public static void main(String[] args) {
         WebDriver driver = login();
 
         driver.findElement(By.cssSelector("a[href='Process.aspx']")).click();
-
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtQuantity")).sendKeys("3");
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtName")).sendKeys("Jack Sparrow");
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox2")).sendKeys("St55");
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox3")).sendKeys("Topeka");
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox4")).sendKeys("Kansas");
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox5")).sendKeys("485926");
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_cardList_0")).click();
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox6")).sendKeys("7848597813204");
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox1")).sendKeys("08/29");
-        driver.findElement(By.cssSelector("input[type='reset']")).click();
-
-        Assert.assertEquals(Integer.parseInt(driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtQuantity")).getAttribute("value")),0);
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox6")).sendKeys("a");
+        driver.findElement(By.cssSelector("label[for='ctl00_MainContent_fmwOrder_TextBox1']")).click();// to take error message
+        Assert.assertEquals(driver.findElement(By.id("ctl00_MainContent_fmwOrder_RegularExpressionValidator2")).getText(),"Invalid format. Only digits allowed.");
 
         driver.quit();
+
     }
+
     private static WebDriver login() {
         System.setProperty("webdriver.chrome.driver", "/Users/MBB/Desktop/SDET/driver/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -41,6 +33,5 @@ public class Reset {
 
         return driver;
     }
+
 }
-
-

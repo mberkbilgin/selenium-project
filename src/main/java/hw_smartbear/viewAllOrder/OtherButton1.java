@@ -1,4 +1,4 @@
-package hw.viewAllOrder;
+package hw_smartbear.viewAllOrder;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,8 +7,16 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-public class LogOut {
+public class OtherButton1 {
     public static void main(String[] args) {
+        WebDriver driver = login();
+
+        driver.findElement(By.cssSelector("a[href='Products.aspx']")).click();
+        Assert.assertEquals(driver.findElement(By.cssSelector("div h2")).getText(),"List of Products");
+        driver.quit();
+    }
+
+    private static WebDriver login() {
         System.setProperty("webdriver.chrome.driver", "/Users/MBB/Desktop/SDET/driver/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -17,13 +25,8 @@ public class LogOut {
         driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester");
         driver.findElement(By.id("ctl00_MainContent_password")).sendKeys("test");
         driver.findElement(By.id("ctl00_MainContent_login_button")).click();
-        driver.findElement(By.id("ctl00_logout")).click();
-        Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"aspnetForm\"]/div[3]/p[2]")).getText(),"In order to log in Orders sample use the following information:");
-
-        driver.close();
-
-        System.out.println("TEST PASSED!");
 
 
+        return driver;
     }
 }

@@ -1,39 +1,33 @@
-package hw.orderPage;
+package hw_smartbear.orderPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 import java.time.Duration;
-import java.util.List;
 
-public class Calculate {
+public class Reset {
     public static void main(String[] args) {
         WebDriver driver = login();
 
         driver.findElement(By.cssSelector("a[href='Process.aspx']")).click();
-        List<WebElement> options = driver.findElements(By.cssSelector("select option"));
 
-        for (int i = 0; i < options.size(); i++) {
-            options.get(i).click();
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtQuantity")).sendKeys("3");
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtName")).sendKeys("Jack Sparrow");
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox2")).sendKeys("St55");
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox3")).sendKeys("Topeka");
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox4")).sendKeys("Kansas");
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox5")).sendKeys("485926");
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_cardList_0")).click();
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox6")).sendKeys("7848597813204");
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox1")).sendKeys("08/29");
+        driver.findElement(By.cssSelector("input[type='reset']")).click();
 
-            driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtQuantity")).clear();
-            driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtQuantity")).sendKeys("9");
+        Assert.assertEquals(Integer.parseInt(driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtQuantity")).getAttribute("value")),0);
 
-            int quantity = Integer.parseInt(driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtQuantity")).getAttribute("value"));
-            int pricePerUnit = Integer.parseInt(driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtUnitPrice")).getAttribute("value"));
-
-            driver.findElement(By.cssSelector("input[type='submit']")).click();
-
-            Assert.assertEquals(Integer.parseInt(driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtTotal")).getAttribute("value")), quantity * pricePerUnit);
-
-        }
         driver.quit();
-
     }
-
     private static WebDriver login() {
         System.setProperty("webdriver.chrome.driver", "/Users/MBB/Desktop/SDET/driver/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -48,3 +42,5 @@ public class Calculate {
         return driver;
     }
 }
+
+

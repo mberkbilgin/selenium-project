@@ -1,4 +1,4 @@
-package hw.loginPage;
+package hw_smartbear.viewAllOrder;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-public class WrongUserPass02 {
+public class LogOut {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "/Users/MBB/Desktop/SDET/driver/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -15,14 +15,15 @@ public class WrongUserPass02 {
         // to prevent to get message "Element Not Visible Exception"
         driver.get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx?ReturnUrl=%2fsamples%2fTestComplete12%2fWebOrders%2fDefault.aspx");
         driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester");
-        driver.findElement(By.id("ctl00_MainContent_password")).sendKeys("test01");
+        driver.findElement(By.id("ctl00_MainContent_password")).sendKeys("test");
         driver.findElement(By.id("ctl00_MainContent_login_button")).click();
-
-
-        Assert.assertEquals(driver.findElement(By.cssSelector("span.error")).getText(),"Invalid Login or Password.");
+        driver.findElement(By.id("ctl00_logout")).click();
+        Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"aspnetForm\"]/div[3]/p[2]")).getText(),"In order to log in Orders sample use the following information:");
 
         driver.close();
 
-        System.out.println("TEST IS PASSED!");
+        System.out.println("TEST PASSED!");
+
+
     }
 }

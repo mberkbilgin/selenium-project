@@ -1,4 +1,4 @@
-package hw.viewAllOrder;
+package hw_smartbear.orderPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,13 +7,17 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-public class OtherButton1 {
+public class Zip {
     public static void main(String[] args) {
         WebDriver driver = login();
 
-        driver.findElement(By.cssSelector("a[href='Products.aspx']")).click();
-        Assert.assertEquals(driver.findElement(By.cssSelector("div h2")).getText(),"List of Products");
+        driver.findElement(By.cssSelector("a[href='Process.aspx']")).click();
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox5")).sendKeys("a");
+        driver.findElement(By.cssSelector("label[for='ctl00_MainContent_fmwOrder_TextBox1']")).click();// to take error message
+        Assert.assertEquals(driver.findElement(By.id("ctl00_MainContent_fmwOrder_rev1")).getText(),"Invalid format. Only digits allowed.");
+
         driver.quit();
+
     }
 
     private static WebDriver login() {
