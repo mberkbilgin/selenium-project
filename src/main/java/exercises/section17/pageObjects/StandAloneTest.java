@@ -1,5 +1,6 @@
-package exercises.section17;
+package exercises.section17.pageObjects;
 
+import exercises.section18.LandingPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,7 @@ public class StandAloneTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get("https://rahulshettyacademy.com/client");
+        LandingPage landingPage = new LandingPage(driver);
         driver.findElement(By.id("userEmail")).sendKeys("asdas@asdas.com");
         driver.findElement(By.id("userPassword")).sendKeys("123456.As");
         driver.findElement(By.id("login")).click();
