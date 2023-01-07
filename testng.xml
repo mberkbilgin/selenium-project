@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="tests" thread-count="6">
+    <listeners>
+        <listener class-name="exercises.section16.Listeners"></listener>
+    </listeners>
+
+    <test name="Personal Loan">
+        <parameter name="URL" value="personalLoan.com"></parameter>
+
+        <classes>
+            <class name="exercises.section16.Day1">
+                <methods>
+                    <include name="Demo"/>
+                    <include name="SecondTest"/>
+                </methods>
+            </class>
+            <class name="exercises.section16.Day2">
+                <methods>
+                    <include name="ploan"/>
+                </methods>
+            </class>
+
+            <class name="exercises.section16.Day4">
+                <methods>
+                    <include name="WebLoginHomeLoan"/>
+                    <include name="MobileLoginHomeLoan"/>
+                    <include name="LoginAPIHomeLoan"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Car Loan">
+        <parameter name="URL" value="carLoan.com"></parameter>
+        <parameter name="APIKey/usrname" value="123456"></parameter>
+        <classes>
+            <class name="exercises.section16.Day3">
+                <methods>
+                    <include name="WebLoginCarLoan"/>
+                    <include name="MobileLoginCarLoan"/>
+                    <include name="MobileSignCarLoan"/>
+                    <include name="MobileSignoutCarLoan"/>
+                    <include name="APICarLoan"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
